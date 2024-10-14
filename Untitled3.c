@@ -4,7 +4,6 @@ int main() //Main function
 {
 	int a,b;
 	printf("Enter two numbers: ");
-	scanf("%d%d",&a,&b);
 	printf("The difference is: %d",a-b);
 	return 0;
 }
