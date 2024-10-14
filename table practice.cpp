@@ -10,6 +10,6 @@ int main()
 	{
 		printf("%d * %d = %d\n",num,i,i*num);
 	}
-	
+	printf("%d");
 	return 0;
 }
