@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.bio-data {
+    margin-top: 200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.info {
+    margin-bottom: 15px;
+}
+.info label {
+    font-weight: bold;
+    color: #555;
+}
+.info p {
+    margin: 5px 0 0;
+    color: #333;
+}
