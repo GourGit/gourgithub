@@ -1,0 +1,79 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+
+}
+body{
+    background-color: #e8ebf3;
+}
+
+header{
+    background-color: rgba(52,88,157,255);
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+
+}
+nav.logo{
+    width: 160px;
+    height: auto;
+    cursor: pointer;
+}
+nav .logo img{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.email{
+    display: flex;
+    margin-right: 550px;
+    border: 1px solid blueviolet;
+    width: 60px;
+    height: 30px;
+    gap: 20px;
+}
+ .check{
+    display: flex;
+    gap: 5px;
+    color: whitesmoke;
+}
+
+.check input[type="checkbox"] {
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.email button {
+    padding: 8px 16px;
+    background-color: #3c5a9a;
+    color: white;
+    border: 1px solid #687dac;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 60px;
+    height: 30px;
+    text-align: center; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+h1{
+    margin-top: 60px;
+    margin-left: 40px;
+    color: blue;
+}
+
+.background{
+    margin-top: 50px;
+    margin-left: 40px;
+    width: 600px;
+    height: 300px;
+    background-blend-mode: overlay;
+}
