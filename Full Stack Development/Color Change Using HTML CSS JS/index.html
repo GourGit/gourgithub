@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change using Javascript</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<script>
+    function changeColor() {
+            const randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+            document.body.style.backgroundColor = randomColor;
+        }
+
+</script>
+<body>
+    <div class="container">
+        <h2>Random Color Generator</h2>
+        <button onclick="changeColor()">Click to Change the Color!</button>
+    </div>
+</body>
+</html>
