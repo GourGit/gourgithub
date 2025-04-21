@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signifia Registrations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #6c63ff;
+            --secondary: #f67280;
+            --text: #2d3436;
+            --background: #ecf0f3;
+            --card-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 15px;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            background: linear-gradient(to right, #fff, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .registrations-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .registrations-table thead {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .registrations-table th, .registrations-table td {
+            padding: 16px 14px;
+            text-align: left;
+        }
+
+        .registrations-table tbody tr {
+            border-bottom: 1px solid #ccc;
+            transition: background 0.2s;
+        }
+
+        .registrations-table tbody tr:hover {
+            background: rgba(108, 99, 255, 0.08);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 0.95rem;
+            transition: border 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .btn {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            width: 100px;
+        }
+
+        .btn-update {
+            background: linear-gradient(135deg, #00b894, #55efc4);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #d63031, #e17055);
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .event-icon {
+            width: 90px;
+            height: 90px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .registrations-table th, .registrations-table td {
+                padding: 10px 8px;
+            }
+
+            .btn {
+                width: 90px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    {{#if status}}
+        <script>
+            const status = {{status}};
+            if (status == 1) {
+                alert("Data Updated Successfully!");
+            } else if (status == 2) {
+                alert("Data Deleted Successfully!");
+            }
+        </script>
+    {{/if}}
+
+    <div class="header">
+        <h1>REGISTRATION LIST FOR UPCOMING SIGNIFIA EVENT</h1>
+    </div>
+
+    {{#if data.length}}
+        <table class="registrations-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>College</th>
+                <th>Event</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data}}
+                <form method="post" action="/update">
+                    <tr>
+                        <td>
+                            <input type="hidden" name="id" value="{{this._id}}">
+                            <input class="input-field" type="text" name="name" value="{{this.name}}" required>
+                        </td>
+                        <td>
+                            <input class="input-field" type="email" name="email" value="{{this.email}}" required>
+                        </td>
+                        <td>
+                            <input class="input-field" type="text" name="college" value="{{this.college}}" required>
+                        </td>
+                        <td>
+                            <input class="input-field" type="text" name="event" value="{{this.event}}" required>
+                        </td>
+                        <td>
+                            <button class="btn btn-update" name="btn" type="submit" value="UPDATE">Update</button><br>
+                            <button class="btn btn-delete" name="btn" type="submit" value="DELETE">Delete</button>
+                        </td>
+                    </tr>
+                </form>
+            {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <div class="empty-state">
+            <p>No registrations found. Be the first to register!</p>
+        </div>
+    {{/if}}
+
+    <div class="footer">
+        <img src="https://cdn-icons-png.flaticon.com/512/9070/9070365.png" alt="Event Icon" class="event-icon" />
+    </div>
+</div>
+</body>
+</html>
